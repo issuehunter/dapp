@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>issuehunter</title>
+    <link rel="stylesheet" type="text/css" href="http://issuehunter.github.io/stylesheets/github-markdown.css">
+    <link rel="stylesheet" type="text/css" href="http://issuehunter.github.io/stylesheets/style.css" />
+    <script src="https://rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+    <script src="/contract-abi.js"></script>
+    <script src="/app.js"></script>
+  </head>
+  <body>
+    <article class="markdown-body">
+      <header class="logo">
+        <h1><span class="blue">issue</span><span class="red">hunter</span></h1>
+      </header>
+
+      <p>
+        Coinbase Address: <strong id="coinbase"></strong></br>
+        Balance: <strong id="balance"></strong></br>
+        Latest Block Number: <strong id="latestBlock"></strong></br>
+        Latest Block Timestamp: <strong id="latestBlockTimestamp"></strong></br>
+        Latest Block Hash: <strong id="latestBlockHash"></strong></br>
+      </p>
+
+      <input id="issueId" type="text" placeholder="issue id">
+      <button onclick="createCampaign();">Create campaign</button>
+
+      <h3>New Campaign</h3>
+      <p>
+        Status: <strong id="newCampaignStatus"></strong></br>
+        Issue id: <strong id="newCampaignIssueId"></strong></br>
+        Created by: <strong id="newCampaignCreatedBy"></strong></br>
+        Timestamp: <strong id="newCampaignTimestamp"></strong></br>
+      </p>
+    </article>
+  </body>
+</html>
