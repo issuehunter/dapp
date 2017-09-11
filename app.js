@@ -17,6 +17,14 @@ web3.eth.getCoinbase(function (err, coinbase) {
   }
 })
 
+web3.eth.getAccounts(function (err, accounts) {
+  if (accounts && accounts.length > 0) {
+    document.getElementById("accounts").innerText = accounts
+  } else {
+    document.getElementById("accounts").innerText = "Connect an account"
+  }
+})
+
 web3.eth.filter("latest").watch(function (err, blockHash) {
   web3.eth.getBlock(blockHash, function (err, block) {
     document.getElementById("latestBlock").innerText = block.number
@@ -29,18 +37,30 @@ var IssueHunter = web3.eth.contract(contractABI)
 var issueHunter = IssueHunter.at(contractAddress)
 
 function createCampaign() {
+  var createCampaignTxn = function (address) {
+    var issueId = document.querySelector("#issueId").value
+    issueHunter.createCampaign(issueId, {from: address}, function (err, res) {
+      if (err) {
+        alert("Error: " + err)
+      } else {
+        document.getElementById("newCampaignStatus").innerText = "Waiting for confirmation..."
+      }
+    })
+  }
+
   web3.eth.getCoinbase(function (err, coinbase) {
     if (coinbase) {
-      var issueId = document.querySelector("#issueId").value
-      issueHunter.createCampaign(issueId, {from: coinbase}, function (err, res) {
-        if (err) {
-          alert("Error: " + err)
+      createCampaignTxn(coinbase)
+    } else {
+      web3.eth.getAccounts(function (err, accounts) {
+        if (accounts && accounts.length > 0) {
+          // TODO: let the user select what account to use to send the txn
+          // Use the first account in the list of accounts managed by the node
+          createCampaignTxn(accounts[0])
         } else {
-          document.getElementById("newCampaignStatus").innerText = "Waiting for confirmation..."
+          alert("Connect an account")
         }
       })
-    } else {
-      alert("Connect an account")
     }
   })
 }
