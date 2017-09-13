@@ -24,6 +24,7 @@ function createCampaign() {
   })
 }
 
+// TODO: listen for CampaignCreated events for a specific issue id
 issueHunter.CampaignCreated().watch(function (err, event) {
   document.getElementById("newCampaignStatus").innerText = "Confirmed"
   document.querySelector(".new-campaign #block").innerText = event.blockHash
