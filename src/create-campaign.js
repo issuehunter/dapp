@@ -25,7 +25,8 @@ function createCampaign() {
 
 issueHunter.CampaignCreated().watch(function (err, event) {
   document.getElementById("newCampaignStatus").innerText = "Confirmed"
-  // TODO: add transaction id and block hash
+  document.querySelector(".new-campaign #block").innerText = event.blockHash
+  document.querySelector(".new-campaign #txn").innerText = event.transactionHash
   document.getElementById("newCampaignIssueId").innerText = web3.toAscii(event.args.issueId)
   document.getElementById("newCampaignCreatedBy").innerText = event.args.creator
   document.getElementById("newCampaignTimestamp").innerText = Date(event.args.timestamp)
