@@ -1,28 +1,24 @@
-function createCampaign() {
-  var createCampaignTxn = function (address) {
-    var issueId = document.querySelector("#issueId").value
-    issueHunter.createCampaign(issueId, {from: address}, function (err, res) {
-      if (err) {
-        alert("Error: " + err)
-      } else {
-        document.getElementById("newCampaignStatus").innerText = "Waiting for confirmation..."
-      }
+web3.eth.getAccounts(function (err, accounts) {
+  if (accounts && accounts.length > 0) {
+    accounts.forEach(function (account) {
+      var accountOption = document.createElement("option")
+      accountOption.innerHTML = account
+      accountOption.value = account
+      document.getElementById("account").appendChild(accountOption)
     })
+  } else {
+    alert("Connect an account")
   }
+})
 
-  web3.eth.getCoinbase(function (err, coinbase) {
-    if (coinbase) {
-      createCampaignTxn(coinbase)
+function createCampaign() {
+  var account = document.querySelector("#account").value
+  var issueId = document.querySelector("#issueId").value
+  issueHunter.createCampaign(issueId, {from: account}, function (err, res) {
+    if (err) {
+      alert("Error: " + err)
     } else {
-      web3.eth.getAccounts(function (err, accounts) {
-        if (accounts && accounts.length > 0) {
-          // TODO: let the user choose which account to use to send the txn
-          // Use the first account in the list of accounts managed by the node
-          createCampaignTxn(accounts[0])
-        } else {
-          alert("Connect an account")
-        }
-      })
+      document.getElementById("newCampaignStatus").innerText = "Waiting for confirmation..."
     }
   })
 }
