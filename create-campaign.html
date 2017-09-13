@@ -8,7 +8,7 @@
     <script src="https://rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
     <script src="/src/contract-abi.js"></script>
     <script src="/src/app.js"></script>
-    <script src="/src/index.js"></script>
+    <script src="/src/create-campaign.js"></script>
   </head>
   <body>
     <article class="markdown-body">
@@ -16,18 +16,18 @@
         <h1><span class="blue">issue</span><span class="red">hunter</span></h1>
       </header>
 
-      <p>
-        Coinbase Address: <strong id="coinbase"></strong></br>
-        Coinbase Balance: <strong id="balance"></strong></br>
-        Accounts: <strong id="accounts"></strong></br>
-        Latest Block Number: <strong id="latestBlock"></strong></br>
-        Latest Block Timestamp: <strong id="latestBlockTimestamp"></strong></br>
-        Latest Block Hash: <strong id="latestBlockHash"></strong></br>
-      </p>
+      <p><a href="/">Back</a></p>
 
-      <ul>
-        <li><a href="/create-campaign.html">Create campaign</a></li>
-      </ul>
+      <input id="issueId" type="text" placeholder="issue id">
+      <button onclick="createCampaign();">Create campaign</button>
+
+      <h3>New Campaign</h3>
+      <p>
+        Status: <strong id="newCampaignStatus"></strong></br>
+        Issue id: <strong id="newCampaignIssueId"></strong></br>
+        Created by: <strong id="newCampaignCreatedBy"></strong></br>
+        Timestamp: <strong id="newCampaignTimestamp"></strong></br>
+      </p>
     </article>
   </body>
 </html>
