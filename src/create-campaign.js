@@ -18,6 +18,7 @@ function createCampaign() {
     if (err) {
       alert("Error: " + err)
     } else {
+      document.querySelector("#issueId").value = ""
       document.getElementById("newCampaignStatus").innerText = "Waiting for confirmation..."
     }
   })
