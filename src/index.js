@@ -11,7 +11,13 @@ web3.eth.getCoinbase(function (err, coinbase) {
 
 web3.eth.getAccounts(function (err, accounts) {
   if (accounts && accounts.length > 0) {
-    document.getElementById("accounts").innerText = accounts
+    var accountsList = document.createElement("ul")
+    document.getElementById("accounts").appendChild(accountsList)
+    accounts.forEach(function (account) {
+      var accountElement = document.createElement("li")
+      accountElement.innerHTML = account
+      accountsList.appendChild(accountElement)
+    })
   } else {
     document.getElementById("accounts").innerText = "Connect an account"
   }
