@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>issuehunter</title>
+    <link rel="stylesheet" type="text/css" href="http://issuehunter.github.io/stylesheets/github-markdown.css">
+    <link rel="stylesheet" type="text/css" href="http://issuehunter.github.io/stylesheets/style.css" />
+    <script src="https://rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+    <script src="/src/contract-abi.js"></script>
+    <script src="/src/app.js"></script>
+    <script src="/src/add-funds.js"></script>
+  </head>
+  <body>
+    <article class="markdown-body">
+      <header class="logo">
+        <h1><span class="blue">issue</span><span class="red">hunter</span></h1>
+      </header>
+
+      <p><a href="/">Back</a></p>
+
+      <div>
+        <label for="account">Account</label>
+        <select id="account"></select>
+      </div>
+      <div>
+        <label for="issueId">Issue id</label>
+        <input id="issueId" type="text" placeholder="issue id">
+      </div>
+      <div>
+        <label for="amount">Amount (in Ether)</label>
+        <input id="amount" type="text" placeholder="0.001">
+      </div>
+      <div>
+        <button onclick="addFunds()">Add funds</button>
+      </div>
+
+      <h3>Campaign</h3>
+      <p class="add-funds">
+        Status: <strong id="status"></strong></br>
+        Block: <strong id="block"></strong></br>
+        Txn: <strong id="txn"></strong></br>
+        Issue id: <strong id="infoIssueId"></strong></br>
+        Funded by: <strong id="funder"></strong></br>
+        Timestamp: <strong id="timestamp"></strong></br>
+        Value: <strong id="infoAmount"></strong></br>
+      </p>
+    </article>
+  </body>
+</html>
