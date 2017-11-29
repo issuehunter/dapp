@@ -8,7 +8,7 @@
     <script src="https://rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
     <script src="/src/contract-abi.js"></script>
     <script src="/src/app.js"></script>
-    <script src="/src/create-campaign.js"></script>
+    <script src="/src/campaign.js"></script>
   </head>
   <body>
     <article class="markdown-body">
@@ -18,26 +18,26 @@
 
       <p><a href="/">Back</a></p>
 
+      <h3>Campaign</h3>
+      <p>
+        Executed: <strong id="executed"></strong></br>
+        Total amount: <strong id="totalAmount"></strong></br>
+        Created by: <strong id="createdBy"></strong></br>
+        Reward period expires at: <strong id="rewardPeriodExpiresAt"></strong></br>
+        Execute period expires at: <strong id="executePeriodExpiresAt"></strong></br>
+        Resolved by: <strong id="resolutor"></strong>
+      </p>
+
       <div>
         <label for="account">Account</label>
-        <select id="account"></select>
+        <input id="account" type="text" placeholder="0x123">
       </div>
       <div>
-        <label for="issueId">Issue id</label>
-        <input id="issueId" type="text" placeholder="issue id">
-      </div>
-      <div>
-        <button onclick="createCampaign()">Create campaign</button>
+        <button onclick="campaignFunds()">Campaign funds</button>
       </div>
 
-      <h3>New Campaign</h3>
-      <p class="new-campaign">
-        Status: <strong id="newCampaignStatus"></strong></br>
-        Block: <strong id="block"></strong></br>
-        Txn: <strong id="txn"></strong></br>
-        Issue id: <strong id="newCampaignIssueId"></strong></br>
-        Created by: <strong id="newCampaignCreatedBy"></strong></br>
-        Timestamp: <strong id="newCampaignTimestamp"></strong></br>
+      <p>
+        Amount: <strong id="amount"></strong>
       </p>
     </article>
   </body>
