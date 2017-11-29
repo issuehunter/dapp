@@ -28,7 +28,6 @@ function addFunds() {
 
 // TODO: listen for CampaignFunded events for a specific issue id
 issueHunter.CampaignFunded().watch(function (err, event) {
-  console.log(event)
   document.querySelector(".add-funds #status").innerText = "Confirmed"
   document.querySelector(".add-funds #block").innerText = event.blockHash
   document.querySelector(".add-funds #txn").innerText = event.transactionHash
